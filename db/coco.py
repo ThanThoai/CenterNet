@@ -22,15 +22,16 @@ class MSCOCO(DETECTION):
         self._split = split
         self._dataset = {
             "trainval": "train",
+            "val"     : "val"
         }[self._split]
         
-        self._zalo_dir = os.path.join(data_dir, "Zalo_Task3")
+        self._zalo_dir = os.path.join(data_dir, "za_traffic_2020/traffic_train")
 
         # self._label_dir  = os.path.join(self._zalo_dir, "annotations")
-        self._label_file = os.path.join(self._zalo_dir, "train_traffic_sign.json")
-        self._label_file = self._label_file.format(self._dataset)
+        self._label_file = os.path.join(self._zalo_dir, f"{self._dataset}_traffic_sign.json")
+        # self._label_file = self._label_file.format(self._dataset)
 
-        self._image_dir  = os.path.join(self._zalo_dir, "images", self._dataset)
+        self._image_dir  = os.path.join(self._zalo_dir, "images")
         self._image_file = os.path.join(self._image_dir, "{}")
 
         self._data = "Zalo"

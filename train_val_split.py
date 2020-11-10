@@ -12,23 +12,23 @@ list_img = [img['id'] for img in data['images']]
 annotations = data['annotations']
 img_train, img_val = train_test_split(list_img, test_size = val_size, random_state = 42)
 train_result = {
-    'info' : data['info']
+    'info' : data['info'],
     'images' : [],
     'annotations' : [], 
     'categories' : data['categories']
 }
 val_result = {
-    'info' : data['info']
+    'info' : data['info'],
     'images' : [],
     'annotations' : [], 
     'categories' : data['categories']
 }
 
-for i, img in list_img:
-    images = data['image'][i]
+for i, img in enumerate(list_img):
+    images = data['images'][i]
     anno   = []
     for a in annotations:
-        if a['id'] == img:
+        if a['image_id'] == img:
             anno.append(a)
     if img in img_train:
         train_result['images'].append(images)
